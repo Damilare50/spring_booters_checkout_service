@@ -1,5 +1,6 @@
 package com.spring_booters.checkout_service.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ public class CheckoutRequestDto {
   private String cashierName;
 
   @NotEmpty
+  @Valid
   private ArrayList<CheckoutProductItem> products;
 
   @Min(value = 0)
