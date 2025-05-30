@@ -31,6 +31,8 @@ public class IndexService {
 
     if (invoice.getDiscount() > 0) {
       invoice.setNetTotal(invoice.getTotal() - (invoice.getTotal() * (invoice.getDiscount() / 100)));
+    } else {
+      invoice.setNetTotal(invoice.getTotal());
     }
 
     return invoice;
