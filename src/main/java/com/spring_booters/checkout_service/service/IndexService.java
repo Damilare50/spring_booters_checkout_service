@@ -30,7 +30,7 @@ public class IndexService {
     invoice.setDiscount(data.getDiscount());
 
     if (invoice.getDiscount() > 0) {
-      invoice.setNetTotal(invoice.getTotal() * (invoice.getDiscount() / 100));
+      invoice.setNetTotal(invoice.getTotal() - (invoice.getTotal() * (invoice.getDiscount() / 100)));
     }
 
     return invoice;
