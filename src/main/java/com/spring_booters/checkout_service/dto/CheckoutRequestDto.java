@@ -1,9 +1,10 @@
 package com.spring_booters.checkout_service.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import com.spring_booters.checkout_service.CustomAnnotation;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class CheckoutRequestDto {
@@ -14,9 +15,12 @@ public class CheckoutRequestDto {
   private String cashierName;
 
   @NotEmpty
+  @Valid
   private ArrayList<CheckoutProductItem> products;
 
-  @Min(value = 0)
+  @DecimalMin(value = "0")
+  @Positive
+  @CustomAnnotation
   private double discount;
 
   public double getDiscount() {
@@ -49,5 +53,22 @@ public class CheckoutRequestDto {
 
   public void setProducts(ArrayList<CheckoutProductItem> products) {
     this.products = products;
+  }
+
+  public static void main(String[] args) {
+    double a = 0.3;
+    double b = 0.1 + 0.2;
+
+    System.out.println(a == b);
+    System.out.println(a);
+    System.out.println(b);
+
+    BigDecimal c = new BigDecimal("0.3");
+    BigDecimal d = new BigDecimal("0.1");
+    BigDecimal e = new BigDecimal("0.200");
+    BigDecimal f = d.add(e);
+
+    System.out.println(c.compareTo(f) == 0);
+    System.out.println(f);
   }
 }

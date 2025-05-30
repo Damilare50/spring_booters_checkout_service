@@ -1,5 +1,6 @@
 package com.spring_booters.checkout_service.exception;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -31,4 +32,15 @@ public class Handler {
 
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
   }
+
+  @ExceptionHandler(ConstraintViolationException.class)
+  public ResponseEntity<Map<String, String>> getErrors(ConstraintViolationException exception) {
+    Map<String, String> errors = new HashMap<>();
+
+    errors.put("exception", exception.getMessage());
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+  }
+
+
 }

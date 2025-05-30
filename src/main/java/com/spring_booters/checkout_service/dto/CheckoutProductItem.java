@@ -1,6 +1,9 @@
 package com.spring_booters.checkout_service.dto;
 
+//import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
+
+import java.math.BigDecimal;
 
 public class CheckoutProductItem {
   @NotNull(message = "product name cannot be empty")
@@ -8,6 +11,7 @@ public class CheckoutProductItem {
 
   @NotNull(message = "product price cannot be null")
   @Min(value = 1, message = "product price cannot be less than 1")
+//  @Column(precision = 21, scale = 2)
   private double price;
 
   @NotNull(message = "product quantity cannot be null")
