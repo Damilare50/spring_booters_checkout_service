@@ -1,6 +1,7 @@
 package com.spring_booters.checkout_service.controller;
 
 import com.spring_booters.checkout_service.dto.CheckoutRequestDto;
+import com.spring_booters.checkout_service.pojo.Invoice;
 import com.spring_booters.checkout_service.service.IndexService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,10 @@ public class IndexController {
     this.indexService = indexService;
   }
 
-
   @PostMapping("/checkout")
-  public ResponseEntity<String> checkout(@Valid @RequestBody CheckoutRequestDto data) {
-    return ResponseEntity.ok("Checkout successful");
+  public ResponseEntity<Invoice> checkout(@Valid @RequestBody CheckoutRequestDto data) {
+    Invoice response = this.indexService.calculate(data);
+
+    return ResponseEntity.ok(response);
   }
 }

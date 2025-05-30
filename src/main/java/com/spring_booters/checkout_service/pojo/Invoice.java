@@ -5,13 +5,25 @@ import java.util.List;
 public class Invoice {
   private double vat;
   private double total;
+  private double netTotal;
   private double discount;
   private List<InvoiceItem> items;
   private String customerName;
   private String cashierName;
 
+  public double getNetTotal() {
+    return this.netTotal;
+  }
+
+  public void setNetTotal(double netTotal) {
+    this.netTotal = netTotal;
+  }
 
   public Invoice(String customerName, String cashierName) {
+    this.vat = 0.075;
+  }
+
+  public Invoice() {
     this.vat = 0.075;
   }
 

@@ -16,9 +16,16 @@ public class CheckoutRequestDto {
   @NotEmpty
   private ArrayList<CheckoutProductItem> products;
 
-  @NotNull
   @Min(value = 0)
   private double discount;
+
+  public double getDiscount() {
+    return this.discount;
+  }
+
+  public void setDiscount(double discount) {
+    this.discount = discount;
+  }
 
   public String getCustomerName() {
     return this.customerName;
