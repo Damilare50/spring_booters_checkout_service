@@ -21,6 +21,8 @@ public class Invoice {
 
   public Invoice(String customerName, String cashierName) {
     this.vat = 0.075;
+    this.customerName = customerName;
+    this.cashierName = cashierName;
   }
 
   public Invoice() {
